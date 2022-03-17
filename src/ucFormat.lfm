@@ -1,0 +1,222 @@
+object FormatDlg: TFormatDlg
+  Left = 607
+  Height = 287
+  Top = 219
+  Width = 264
+  AutoSize = True
+  BorderStyle = bsDialog
+  Caption = 'Number format'
+  ClientHeight = 287
+  ClientWidth = 264
+  Font.Color = clWindowText
+  Font.Height = -12
+  OnShow = FormShow
+  Position = poMainFormCenter
+  LCLVersion = '2.3.0.0'
+  object btnOK: TButton
+    AnchorSideTop.Control = btnCancel
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = btnCancel
+    Left = 98
+    Height = 25
+    Top = 228
+    Width = 75
+    Anchors = [akTop, akRight]
+    BorderSpacing.Right = 8
+    Caption = '&OK'
+    Default = True
+    ModalResult = 1
+    OnClick = btnOKClick
+    TabOrder = 1
+  end
+  object btnCancel: TButton
+    AnchorSideTop.Control = Panel1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Panel1
+    AnchorSideRight.Side = asrBottom
+    Left = 181
+    Height = 25
+    Top = 228
+    Width = 75
+    Anchors = [akTop, akRight]
+    BorderSpacing.Bottom = 8
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 2
+  end
+  object Panel1: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 8
+    Height = 212
+    Top = 8
+    Width = 248
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 8
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    ClientHeight = 212
+    ClientWidth = 248
+    TabOrder = 0
+    object rgFormats: TGroupBox
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Panel1
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 10
+      Height = 89
+      Top = 10
+      Width = 228
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = True
+      BorderSpacing.Around = 8
+      Caption = 'Number formats:'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 69
+      ClientWidth = 224
+      TabOrder = 0
+      object rbFormatAuto: TRadioButton
+        AnchorSideLeft.Control = rgFormats
+        AnchorSideTop.Control = rgFormats
+        Left = 12
+        Height = 19
+        Top = 0
+        Width = 96
+        BorderSpacing.Left = 12
+        Caption = '&general format'
+        OnClick = rbFormatAutoClick
+        TabOrder = 0
+      end
+      object rbFormatExp: TRadioButton
+        AnchorSideLeft.Control = rbFormatAuto
+        AnchorSideTop.Control = rbFormatAuto
+        AnchorSideTop.Side = asrBottom
+        Left = 12
+        Height = 19
+        Top = 19
+        Width = 119
+        Caption = '&exponential format'
+        OnClick = rbFormatExpClick
+        TabOrder = 1
+      end
+      object rbFormatFixed: TRadioButton
+        AnchorSideLeft.Control = rbFormatAuto
+        AnchorSideTop.Control = rbFormatExp
+        AnchorSideTop.Side = asrBottom
+        Left = 12
+        Height = 19
+        Top = 38
+        Width = 83
+        BorderSpacing.Bottom = 12
+        Caption = '&fixed format'
+        OnClick = rbFormatFixedClick
+        TabOrder = 2
+      end
+    end
+    object lblDecimalSeparator: TLabel
+      AnchorSideLeft.Control = rgFormats
+      AnchorSideTop.Control = cbDecimalSeparator
+      AnchorSideTop.Side = asrCenter
+      Left = 10
+      Height = 15
+      Top = 111
+      Width = 98
+      Caption = '&Decimal separator:'
+      ParentColor = False
+    end
+    object lblTousandsSeparator: TLabel
+      AnchorSideLeft.Control = rgFormats
+      AnchorSideTop.Control = cbThousandSeparator
+      AnchorSideTop.Side = asrCenter
+      Left = 10
+      Height = 15
+      Top = 140
+      Width = 104
+      Caption = '&Thousand separator'
+      ParentColor = False
+    end
+    object lblDecimals: TLabel
+      AnchorSideLeft.Control = rgFormats
+      AnchorSideTop.Control = edDecimals
+      AnchorSideTop.Side = asrCenter
+      Left = 10
+      Height = 15
+      Top = 169
+      Width = 78
+      Caption = 'Dezimal &places'
+      FocusControl = edDecimals
+      ParentColor = False
+    end
+    object edDecimals: TSpinEdit
+      AnchorSideLeft.Control = cbThousandSeparator
+      AnchorSideTop.Control = cbThousandSeparator
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = cbDecimalSeparator
+      AnchorSideRight.Side = asrBottom
+      Left = 130
+      Height = 23
+      Top = 165
+      Width = 108
+      Alignment = taRightJustify
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 6
+      MaxValue = 15
+      TabOrder = 3
+      Value = 3
+    end
+    object cbDecimalSeparator: TComboBox
+      AnchorSideLeft.Control = cbThousandSeparator
+      AnchorSideTop.Control = rgFormats
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = rgFormats
+      AnchorSideRight.Side = asrBottom
+      Left = 130
+      Height = 23
+      Top = 107
+      Width = 108
+      Anchors = [akTop, akLeft, akRight]
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'Dot (.)'
+        'Comma (,)'
+      )
+      Style = csDropDownList
+      TabOrder = 1
+      Text = 'Dot (.)'
+    end
+    object cbThousandSeparator: TComboBox
+      AnchorSideLeft.Control = lblTousandsSeparator
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = cbDecimalSeparator
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = rgFormats
+      AnchorSideRight.Side = asrBottom
+      Left = 130
+      Height = 23
+      Top = 136
+      Width = 108
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 16
+      BorderSpacing.Top = 6
+      Constraints.MinWidth = 100
+      ItemHeight = 15
+      Items.Strings = (
+        'Comma (,)'
+        'Dot (.)'
+        'Space ( )'
+      )
+      Style = csDropDownList
+      TabOrder = 2
+    end
+  end
+end

@@ -1,0 +1,125 @@
+object AboutBox: TAboutBox
+  Left = 246
+  Height = 131
+  Top = 226
+  Width = 267
+  AutoSize = True
+  BorderStyle = bsDialog
+  Caption = 'Info about Unit Converter'
+  ClientHeight = 131
+  ClientWidth = 267
+  Color = clBtnFace
+  Font.Color = clWindowText
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '2.3.0.0'
+  object Image1: TImage
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 8
+    Height = 64
+    Top = 8
+    Width = 64
+    BorderSpacing.Left = 8
+    BorderSpacing.Top = 8
+  end
+  object lblProgName: TLabel
+    AnchorSideLeft.Control = Image1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Image1
+    Left = 88
+    Height = 30
+    Top = 8
+    Width = 134
+    BorderSpacing.Left = 16
+    BorderSpacing.Right = 16
+    Caption = 'Unit Converter'
+    Font.Color = clWindowText
+    Font.Height = -21
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblAuthor: TLabel
+    AnchorSideLeft.Control = lblProgName
+    AnchorSideTop.Control = lblVersion
+    AnchorSideTop.Side = asrBottom
+    Left = 88
+    Height = 15
+    Top = 53
+    Width = 71
+    Caption = '(c) W. Pamler'
+    ParentColor = False
+  end
+  object Bevel1: TBevel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Label2
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 8
+    Height = 2
+    Top = 91
+    Width = 251
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 8
+    BorderSpacing.Top = 8
+    BorderSpacing.Right = 8
+  end
+  object lblVersion: TLabel
+    AnchorSideLeft.Control = lblProgName
+    AnchorSideTop.Control = lblProgName
+    AnchorSideTop.Side = asrBottom
+    Left = 88
+    Height = 15
+    Top = 38
+    Width = 44
+    BorderSpacing.Right = 16
+    Caption = 'Version: '
+    ParentColor = False
+    OnClick = btnOKClick
+  end
+  object btnOK: TButton
+    AnchorSideTop.Control = Bevel1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 186
+    Height = 25
+    Top = 101
+    Width = 73
+    Anchors = [akTop, akRight]
+    BorderSpacing.Around = 8
+    Caption = '&OK'
+    OnClick = btnOKClick
+    TabOrder = 0
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = lblAuthor
+    AnchorSideTop.Control = lblAuthor
+    AnchorSideTop.Side = asrBottom
+    Left = 88
+    Height = 15
+    Top = 68
+    Width = 97
+    Caption = 'Icons provided by '
+    ParentColor = False
+  end
+  object lblIcons8: TLabel
+    AnchorSideLeft.Control = Label2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label2
+    Cursor = crHandPoint
+    Left = 185
+    Height = 15
+    Hint = 'https://icons8.com/icons/office'
+    Top = 68
+    Width = 34
+    Caption = 'icons8'
+    Font.Color = clBlue
+    ParentColor = False
+    ParentFont = False
+    OnClick = lblIcons8Click
+    OnMouseEnter = lblIcons8MouseEnter
+    OnMouseLeave = lblIcons8MouseLeave
+  end
+end
