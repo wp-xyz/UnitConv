@@ -1,12 +1,12 @@
 object MainForm: TMainForm
   Left = 889
-  Height = 258
+  Height = 328
   Top = 298
   Width = 573
   ActiveControl = edSource
   Anchors = [akLeft]
   Caption = 'Unit Converter'
-  ClientHeight = 258
+  ClientHeight = 328
   ClientWidth = 573
   Color = clBtnFace
   Constraints.MinWidth = 450
@@ -22,7 +22,7 @@ object MainForm: TMainForm
   Scaled = False
   object Splitter1: TSplitter
     Left = 210
-    Height = 220
+    Height = 290
     Top = 0
     Width = 6
     Color = clBtnFace
@@ -30,7 +30,7 @@ object MainForm: TMainForm
   end
   object PanelLeft: TPanel
     Left = 6
-    Height = 214
+    Height = 284
     Top = 6
     Width = 201
     Align = alLeft
@@ -38,12 +38,12 @@ object MainForm: TMainForm
     BorderSpacing.Top = 6
     BorderSpacing.Right = 3
     BevelOuter = bvNone
-    ClientHeight = 214
+    ClientHeight = 284
     ClientWidth = 201
     TabOrder = 0
     object lvDatatypes: TListView
       Left = 0
-      Height = 214
+      Height = 284
       Top = 0
       Width = 201
       Align = alClient
@@ -57,13 +57,13 @@ object MainForm: TMainForm
       IconOptions.AutoArrange = True
       ShowColumnHeaders = False
       TabOrder = 0
-      ViewStyle = vsReport
+      ViewStyle = vsIcon
       OnSelectItem = lvDatatypesSelectItem
     end
   end
   object PanelRight: TPanel
     Left = 219
-    Height = 214
+    Height = 284
     Top = 6
     Width = 348
     Align = alClient
@@ -73,7 +73,7 @@ object MainForm: TMainForm
     BorderSpacing.Top = 6
     BorderSpacing.Right = 6
     BevelOuter = bvNone
-    ClientHeight = 214
+    ClientHeight = 284
     ClientWidth = 348
     TabOrder = 2
     object HeaderPanel: TPanel
@@ -350,7 +350,7 @@ object MainForm: TMainForm
   object PanelBottom: TPanel
     Left = 0
     Height = 38
-    Top = 220
+    Top = 290
     Width = 573
     Align = alBottom
     AutoSize = True
