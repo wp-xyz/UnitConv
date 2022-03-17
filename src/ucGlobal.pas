@@ -215,7 +215,7 @@ Begin
     Dest := 1;
     ImageIndex := ord(diAccel);
     SetLength(Units, 3);
-    CreateUnitItem(diAccel, 0, 'm/s²', 1, 0, 0, 1);
+    CreateUnitItem(diAccel, 0, 'm/sÂ²', 1, 0, 0, 1);
     CreateUnitItem(diAccel, 1, 'acceleration of gravity (g)', _gn, 0, 0, 1);
     CreateUnitItem(diAccel, 2, 'seconds from 0 to 100 km/h', 0, 100/3.6, 1, 0);
   End;
