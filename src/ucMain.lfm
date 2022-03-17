@@ -51,7 +51,7 @@ object MainForm: TMainForm
       Columns = <      
         item
           Caption = 'Quantity'
-          Width = 73
+          Width = 10
         end>
       HideSelection = False
       IconOptions.AutoArrange = True
@@ -83,12 +83,13 @@ object MainForm: TMainForm
       Top = 0
       Width = 348
       Align = alTop
-      BevelOuter = bvNone
+      BevelInner = bvRaised
+      BevelOuter = bvLowered
       Caption = 'HeaderPanel'
       ClientHeight = 43
       ClientWidth = 348
-      Color = clHighlight
-      Font.Color = clHighlightText
+      Color = clWindow
+      Font.Color = clWindowText
       Font.Height = -16
       Font.Style = [fsBold]
       ParentBackground = False
@@ -100,7 +101,7 @@ object MainForm: TMainForm
         Height = 38
         Top = 3
         Width = 38
-        BevelOuter = bvLowered
+        BevelOuter = bvNone
         ClientHeight = 38
         ClientWidth = 38
         Color = clWhite
@@ -108,10 +109,10 @@ object MainForm: TMainForm
         ParentColor = False
         TabOrder = 0
         object DataIcon: TImage
-          Left = 3
-          Height = 32
-          Top = 3
-          Width = 32
+          Left = 2
+          Height = 34
+          Top = 2
+          Width = 34
           Align = alClient
           BorderSpacing.Around = 2
           Transparent = True
@@ -134,6 +135,8 @@ object MainForm: TMainForm
       BevelOuter = bvLowered
       ClientHeight = 163
       ClientWidth = 348
+      Color = clWindow
+      ParentColor = False
       TabOrder = 1
       OnResize = PanelControlsResize
       object lblCorresponds: TLabel
