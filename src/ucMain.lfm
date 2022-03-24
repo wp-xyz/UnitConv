@@ -79,44 +79,41 @@ object MainForm: TMainForm
     object HeaderPanel: TPanel
       AnchorSideRight.Side = asrBottom
       Left = 0
-      Height = 43
+      Height = 32
       Top = 0
       Width = 348
       Align = alTop
-      BevelInner = bvRaised
-      BevelOuter = bvLowered
-      Caption = 'HeaderPanel'
-      ClientHeight = 43
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
       ClientWidth = 348
-      Color = clWindow
       Font.Color = clWindowText
       Font.Height = -16
       Font.Style = [fsBold]
       ParentBackground = False
-      ParentColor = False
       ParentFont = False
       TabOrder = 0
-      object PanelIcon: TPanel
-        Left = 3
-        Height = 38
-        Top = 3
-        Width = 38
-        BevelOuter = bvNone
-        ClientHeight = 38
-        ClientWidth = 38
-        Color = clWhite
-        ParentBackground = False
+      object HeaderLabel: TLabel
+        AnchorSideLeft.Control = HeaderImage
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = HeaderPanel
+        AnchorSideTop.Side = asrCenter
+        Left = 40
+        Height = 21
+        Top = 6
+        Width = 96
+        BorderSpacing.Left = 8
+        Caption = 'HeaderLabel'
         ParentColor = False
-        TabOrder = 0
-        object DataIcon: TImage
-          Left = 2
-          Height = 34
-          Top = 2
-          Width = 34
-          Align = alClient
-          BorderSpacing.Around = 2
-          Transparent = True
-        end
+      end
+      object HeaderImage: TImage
+        AnchorSideLeft.Control = HeaderPanel
+        AnchorSideTop.Control = HeaderPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 32
+        Transparent = True
       end
     end
     object PanelControls: TPanel
@@ -127,15 +124,14 @@ object MainForm: TMainForm
       AnchorSideRight.Side = asrBottom
       Left = 0
       Height = 163
-      Top = 51
+      Top = 40
       Width = 348
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 8
-      BevelInner = bvRaised
       BevelOuter = bvLowered
       ClientHeight = 163
       ClientWidth = 348
-      Color = clWindow
+      Color = clScrollBar
       ParentColor = False
       TabOrder = 1
       OnResize = PanelControlsResize
@@ -144,9 +140,9 @@ object MainForm: TMainForm
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = edSource
         AnchorSideTop.Side = asrBottom
-        Left = 79
+        Left = 78
         Height = 15
-        Top = 53
+        Top = 52
         Width = 74
         BorderSpacing.Top = 12
         Caption = 'correspond to'
@@ -156,10 +152,10 @@ object MainForm: TMainForm
         AnchorSideLeft.Control = btnPaste
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = PanelControls
-        Left = 62
+        Left = 61
         Height = 23
         Hint = 'Value to be converted'
-        Top = 18
+        Top = 17
         Width = 109
         Alignment = taRightJustify
         BorderSpacing.Left = 16
@@ -175,10 +171,10 @@ object MainForm: TMainForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edSource
         AnchorSideRight.Side = asrBottom
-        Left = 62
+        Left = 61
         Height = 23
         Hint = 'Result of the conversion'
-        Top = 80
+        Top = 79
         Width = 109
         Alignment = taRightJustify
         Anchors = [akTop, akLeft, akRight]
@@ -192,10 +188,10 @@ object MainForm: TMainForm
         AnchorSideLeft.Control = edSource
         AnchorSideTop.Control = edResult
         AnchorSideTop.Side = asrBottom
-        Left = 62
+        Left = 61
         Height = 25
         Hint = 'Specify the number format'
-        Top = 119
+        Top = 118
         Width = 73
         AutoSize = True
         BorderSpacing.Top = 16
@@ -211,10 +207,10 @@ object MainForm: TMainForm
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = cbSourceUnits
         AnchorSideRight.Side = asrBottom
-        Left = 184
+        Left = 185
         Height = 23
         Hint = 'Result units'
-        Top = 80
+        Top = 79
         Width = 146
         Anchors = [akTop, akLeft, akRight]
         DropDownCount = 24
@@ -229,10 +225,10 @@ object MainForm: TMainForm
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = PanelControls
         AnchorSideRight.Side = asrBottom
-        Left = 184
+        Left = 185
         Height = 23
         Hint = 'Source units'
-        Top = 18
+        Top = 17
         Width = 146
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 16
@@ -247,10 +243,10 @@ object MainForm: TMainForm
         AnchorSideLeft.Control = cbResultUnits
         AnchorSideTop.Control = btnFormat
         AnchorSideRight.Side = asrBottom
-        Left = 184
+        Left = 185
         Height = 26
         Hint = 'Exchange source and result units'
-        Top = 119
+        Top = 118
         Width = 97
         AutoSize = True
         BorderSpacing.Bottom = 16
@@ -293,10 +289,10 @@ object MainForm: TMainForm
         AnchorSideLeft.Control = PanelControls
         AnchorSideTop.Control = edSource
         AnchorSideTop.Side = asrCenter
-        Left = 18
+        Left = 17
         Height = 28
         Hint = 'Paste the clipboard contents'
-        Top = 15
+        Top = 14
         Width = 28
         BorderSpacing.Left = 16
         Font.Color = clWindowText
@@ -323,10 +319,10 @@ object MainForm: TMainForm
         AnchorSideLeft.Control = btnPaste
         AnchorSideTop.Control = edResult
         AnchorSideTop.Side = asrCenter
-        Left = 18
+        Left = 17
         Height = 28
         Hint = 'Copy the result to the clipboard'
-        Top = 77
+        Top = 76
         Width = 28
         Font.Color = clWindowText
         Font.Height = -11

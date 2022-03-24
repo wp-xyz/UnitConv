@@ -22,14 +22,14 @@ type
     cbSourceUnits: TComboBox;
     cbResultUnits: TComboBox;
     Images: TImageList;
+    HeaderLabel: TLabel;
     lblCorresponds: TLabel;
     btnExit: TBitBtn;
     btnAbout: TBitBtn;
     btnFormat: TBitBtn;
     lvDatatypes: TListView;
     HeaderPanel: TPanel;
-    DataIcon: TImage;
-    PanelIcon: TPanel;
+    HeaderImage: TImage;
     PanelControls: TPanel;
     PanelLeft: TPanel;
     PanelRight: TPanel;
@@ -154,7 +154,6 @@ begin
     F.Free;
   end;
 end;
-
 
 procedure TMainForm.btnPasteClick(Sender: TObject);
 var
@@ -415,12 +414,12 @@ begin
 
   EdSource.Text := FormatFloat(dataItem.Value);
 
-  HeaderPanel.Caption := dataItem.Name;
+  HeaderLabel.Caption := dataItem.Name;
 
   bmp := TBitmap.Create;
   try
-    Images.Resolution[DataIcon.Width].GetBitmap(dataItem.ImageIndex, bmp);
-    DataIcon.Picture.Assign(bmp);
+    Images.Resolution[HeaderImage.Width].GetBitmap(dataItem.ImageIndex, bmp);
+    HeaderImage.Picture.Assign(bmp);
   finally
     bmp.Free;
   end;
