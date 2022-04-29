@@ -445,8 +445,8 @@ begin
     SetLength(Units, 4);
     CreateUnitItem(diFuelConsumption, 0, 'liters per km',         1.0, 0.0, 0.0, 1.0);
     CreateUnitItem(diFuelConsumption, 1, 'liters per 100 km',     1.0, 0.0, 0.0, 100.0);
-    CreateUnitItem(diFuelConsumption, 2, 'miles per gallon (US)', 0.0, 1.0, 1609.344/3785.4117, 0.0);
-    CreateUnitItem(diFuelConsumption, 3, 'miles per gallon (UK)', 0.0, 1.0, 1609.344/4546.1,    0.0);
+    CreateUnitItem(diFuelConsumption, 2, 'miles per gallon (US)', 0.0, 3785.4117, 1609.344, 0.0);
+    CreateUnitItem(diFuelConsumption, 3, 'miles per gallon (UK)', 0.0, 4546.1, 1609.344, 0.0);
   end;
 end;
 
@@ -459,11 +459,18 @@ begin
     Source := 0;
     Dest := 1;
     ImageIndex := ord(diMemory);
-    SetLength(Units, 4);
+    SetLength(Units, 11);
     CreateUnitItem(diMemory, 0, 'bytes', 1, 0, 0, 1);
-    CreateUnitItem(diMemory, 1, 'kilo bytes (KB)', 1024, 0, 0, 1);
-    CreateUnitItem(diMemory, 2, 'mega bytes (MB)', 1024*1024, 0, 0, 1);
-    CreateUnitItem(diMemory, 3, 'giga bytes (GB)', 1024*1024*1024, 0, 0, 1);
+    CreateUnitItem(diMemory, 1, 'kibibytes (KiB)', 1024, 0, 0, 1);
+    CreateUnitItem(diMemory, 2, 'mebibytes (MiB)', 1024*1024, 0, 0, 1);
+    CreateUnitItem(diMemory, 3, 'gibibytes (GiB)', 1024*1024*1024, 0, 0, 1);
+    CreateUnitItem(diMemory, 4, 'tebibytes (TiB)', 1024*1024*1024*1024, 0, 0, 1);
+    CreateUnitItem(diMemory, 5, 'pebibytes (PiB)', 1024*1024*1024*1024*1024, 0, 0, 1);
+    CreateUnitItem(diMemory, 6, 'kilo bytes (KB)', 1000, 0, 0, 1);
+    CreateUnitItem(diMemory, 7, 'mega bytes (MB)', 1000*1000, 0, 0, 1);
+    CreateUnitItem(diMemory, 8, 'giga bytes (GB)', 1000*1000*1000, 0, 0, 1);
+    CreateUnitItem(diMemory, 9, 'tera bytes (TB)', 1000*1000*1000*1000, 0, 0, 1);
+    CreateUnitItem(diMemory,10, 'peta bytes (PB)', 1000*1000*1000*1000*1000, 0, 0, 1); 
   end;
 end;
 

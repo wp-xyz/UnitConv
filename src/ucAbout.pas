@@ -33,6 +33,7 @@ type
 var
   AboutBox: TAboutBox;
 
+  
 implementation
 
 {$R *.lfm}
@@ -52,6 +53,7 @@ begin
   fs.DateSeparator := '/';
   Result := StrToDateTime({$I %DATE%} + ' ' + {$I %TIME%}, fs)
 end; 
+
 
 function GetProgramVersion: String;
 var
@@ -75,6 +77,7 @@ begin
   Close;
 end;
 
+
 procedure TAboutBox.FormCreate(Sender: TObject);
 var
   sz: TSize;
@@ -85,19 +88,23 @@ begin
   lblVersion.Caption := 'Version ' + GetProgramVersion;
 end;
 
+
 procedure TAboutBox.lblIcons8Click(Sender: TObject);
 begin
   OpenURL(lblIcons8.Hint);
 end;
+
 
 procedure TAboutBox.lblIcons8MouseEnter(Sender: TObject);
 begin
   lblIcons8.Font.Style := lblIcons8.Font.Style + [fsUnderline];
 end;
 
+
 procedure TAboutBox.lblIcons8MouseLeave(Sender: TObject);
 begin
   lblIcons8.Font.Style := lblIcons8.Font.Style - [fsUnderline];
 end;
+
 
 end.
