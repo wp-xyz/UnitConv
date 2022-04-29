@@ -4,30 +4,31 @@ interface
 
 Const
   { Natural constants in SI units, 1986 recommended values in  "Physics Today" }
-  _h             = 6.6260755E-34;    { Planck's constant }
-  _c             = 2.99792458E8;     { speed of light }
-  _e             = 1.60217733E-19;   { elementary chart }
-  _k             = 1.380658E-23;     { Boltzmann constant }
-  _u             = 1.6605402E-27;    { atomic mass unit }
-  _gn            = 9.80665;          { standard acceleration of gravity }
+  _h                = 6.6260755E-34;    { Planck's constant }
+  _c                = 2.99792458E8;     { speed of light }
+  _e                = 1.60217733E-19;   { elementary chart }
+  _k                = 1.380658E-23;     { Boltzmann constant }
+  _u                = 1.6605402E-27;    { atomic mass unit }
+  _gn               = 9.80665;          { standard acceleration of gravity }
 
-  diLength       = 0;
-  diArea         = 1;
-  diVolume       = 2;
-  diMass         = 3;
-  diTime         = 4;
-  diSpeed        = 5;
-  diAccel        = 6;
-  diForce        = 7;
-  diFlowRate     = 8;
-  diPressure     = 9;
-  diTemperature  = 10;
-  diEnergy       = 11;
-  diPower        = 12;
-  diMagField     = 13;
-  diOzoneConc    = 14;
-  diAngle        = 15;
-  diMemory       = 16;
+  diLength          = 0;
+  diArea            = 1;
+  diVolume          = 2;
+  diMass            = 3;
+  diTime            = 4;
+  diSpeed           = 5;
+  diAccel           = 6;
+  diForce           = 7;
+  diFlowRate        = 8;
+  diPressure        = 9;
+  diTemperature     = 10;
+  diEnergy          = 11;
+  diPower           = 12;
+  diMagField        = 13;
+  diFuelConsumption = 14;
+  diOzoneConc       = 15;
+  diAngle           = 16;
+  diMemory          = 17;
   diLast  = diMemory;
   diCount = diLast + 1;
 
@@ -73,10 +74,12 @@ function GetDecimalSep: TDecimalSep;
 function GetThousandSep: TThousandSep;
 procedure UpdateFormatSettings(ADecimalSep: TDecimalSep; AThousandSep: TThousandSep);
 
+
 implementation
 
 uses
   SysUtils, Math;
+
 
 Procedure CreateUnitItem(dataID, unitID: Integer; Name:String;
   A,B,C,D:Double);
@@ -97,24 +100,25 @@ Begin
     Source := 0;
     Dest := 1;
     ImageIndex := ord(diLength);
-    SetLength(Units, 15);
-    CreateUnitItem(diLength, 0, 'kilometers (km)',  1E3,  0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 1, 'meters (m)',       1.0,  0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 2, 'centimeters (cm)', 1E-2, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 3, 'millimeters (mm)', 1E-3, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 4, 'microns (�m)', 1E-6, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 5, 'nanometers (nm)',  1E-9, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 6, 'Angstr�m (A�)',  1E-10, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 7, 'Inches',          0.0254, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 8, 'milli-inches (mils)', 0.0254E-3, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 9, 'feet (ft)', 0.3048, 0.0, 0.0, 1.0);
-    CreateunitItem(diLength, 10,'yard (yd)', 0.9144,  0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 11,'Sea miles (sm)', 1852.0, 0.0, 0.0, 1.0);
-    CreateUnitItem(diLength, 12, 'light years (ly)',
+    SetLength(Units, 16);
+    CreateUnitItem(diLength,  0, 'kilometers (km)',  1E3,  0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  1, 'meters (m)',       1.0,  0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  2, 'centimeters (cm)', 1E-2, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  3, 'millimeters (mm)', 1E-3, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  4, 'microns (µm)', 1E-6, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  5, 'nanometers (nm)',  1E-9, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  6, 'Angström (Å)',     1E-10, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  7, 'Miles',            1609.344, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  8, 'Inches',           0.0254, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength,  9, 'milli-inches (mils)', 0.0254E-3, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength, 10, 'feet (ft)', 0.3048, 0.0, 0.0, 1.0);
+    CreateunitItem(diLength, 11, 'yard (yd)', 0.9144,  0.0, 0.0, 1.0);
+    CreateUnitItem(diLength, 12, 'Sea miles (sm)', 1852.0, 0.0, 0.0, 1.0);
+    CreateUnitItem(diLength, 13, 'light years (ly)',
       _c*60*60*24*365, 0, 0, 1);               { c from Physics Today}
-    CreateUnitItem(diLength, 13, 'astronomic units (ua)',
+    CreateUnitItem(diLength, 14, 'astronomic units (ua)',
       1.49597870691E11, 0, 0, 1);                               {Physics Today}
-    CreateUnitItem(diLength, 14, 'Parsec (pc)',
+    CreateUnitItem(diLength, 15, 'Parsec (pc)',
       3.0857E16, 0, 0, 1);
   End;
 End;
@@ -127,7 +131,7 @@ Begin
     Source := 0;
     Dest := 1;
     ImageIndex := ord(diArea);
-    SetLength(Units, 11);
+    SetLength(Units, 12);
     CreateUnitItem(diArea, 0, 'km²', 1E6, 0.0, 0.0, 1.0);
     CreateUnitItem(diArea, 1, 'square meters (m²)', 1.0, 0.0, 0.0, 1.0);
     CreateUnitItem(diArea, 2, 'cm²', 1E-4, 0.0, 0.0, 1.0);
@@ -139,6 +143,7 @@ Begin
     CreateUnitItem(diArea, 8, 'square inches', Sqr(0.0254), 0.0, 0.0, 1.0);
     CreateUnitItem(diArea, 9, 'square feet (ft²)', Sqr(0.3048), 0.0, 0.0, 1.0);
     CreateUnitItem(diArea,10, 'acres (ac)', 4077.0, 0.0, 0.0, 1.0);
+    CreateUnitItem(diArea,11, 'square miles', sqr(1609.344), 0.0, 0.0, 1.0); 
   End;
 End;
 
@@ -157,11 +162,11 @@ Begin
     CreateUnitItem(diVolume, 3, 'Maß (German)', 1E3, 0, 0, 1);
     CreateUnitItem(diVolume, 4, 'Halbe (German)', 500.0, 0, 0, 1);
     CreateUnitItem(diVolume, 5, 'milliliters (ml)', 1.0, 0.0, 0.0, 1.0);
-    CreateUnitItem(diVolume, 6, 'gallons (USA)', 3785.4117, 0.0, 0.0, 1.0);
-    CreateUnitItem(diVolume, 7, 'gallons (GB)', 4546.1, 0.0, 0.0, 1.0);
+    CreateUnitItem(diVolume, 6, 'gallons (US)', 3785.4117, 0.0, 0.0, 1.0);
+    CreateUnitItem(diVolume, 7, 'gallons (UK)', 4546.1, 0.0, 0.0, 1.0);
     CreateUnitItem(diVolume, 8, 'cubic feet (cf)', 28316.846, 0.0, 0.0, 1.0);
-    CreateUnitItem(diVolume, 9, 'fluid ounces (fl.oz) (USA)', 29.5735, 0, 0, 1);
-    CreateUnitItem(diVolume, 10,'fluid ounces (fl.oz) (GB)',  28.4131, 0, 0, 1);
+    CreateUnitItem(diVolume, 9, 'fluid ounces (fl.oz) (US)', 29.5735, 0, 0, 1);
+    CreateUnitItem(diVolume,10, 'fluid ounces (fl.oz) (UK)',  28.4131, 0, 0, 1);
   End;
 End;
 
@@ -257,9 +262,9 @@ Begin
       1E3/60.0, 0.0, 0.0, 1.0);
     CreateUnitItem(diFlowRate, 3, 'cubic meters per hour (m³/h)',
       1E6/60, 0.0, 0.0, 1.0);
-    CreateUnitItem(diFlowrate, 4, 'gallons per minute (gpm)',
+    CreateUnitItem(diFlowrate, 4, 'gallons per minute (gpm, US)',
       3785.4117, 0.0, 0.0, 1.0);
-    CreateUnitItem(diFlowRate, 5, 'gallons per hour (gph)',
+    CreateUnitItem(diFlowRate, 5, 'gallons per hour (gph, US)',
       3785.4117/60.0, 0.0, 0.0, 1.0);
     CreateUnitItem(diFlowRate, 6, 'cubic feet per minute (cfm)',
       28316.846, 0.0, 0.0, 1.0);
@@ -427,6 +432,25 @@ begin
   end;
 end;
 
+
+procedure CreateFuelConsumptionItems;
+begin
+  with DataItems[diFuelConsumption] do
+  begin
+    Name := 'Fuel consumption';
+    Value := 1.0;
+    Source := 1;
+    Dest := 1;
+    ImageIndex := ord(diFuelConsumption);
+    SetLength(Units, 4);
+    CreateUnitItem(diFuelConsumption, 0, 'liters per km',         1.0, 0.0, 0.0, 1.0);
+    CreateUnitItem(diFuelConsumption, 1, 'liters per 100 km',     1.0, 0.0, 0.0, 100.0);
+    CreateUnitItem(diFuelConsumption, 2, 'miles per gallon (US)', 0.0, 1.0, 1609.344/3785.4117, 0.0);
+    CreateUnitItem(diFuelConsumption, 3, 'miles per gallon (UK)', 0.0, 1.0, 1609.344/4546.1,    0.0);
+  end;
+end;
+
+  
 procedure CreateMemoryItems;
 begin
   with DataItems[diMemory] do begin
@@ -442,6 +466,7 @@ begin
     CreateUnitItem(diMemory, 3, 'giga bytes (GB)', 1024*1024*1024, 0, 0, 1);
   end;
 end;
+
 
 Procedure CreateItems;
 Begin
@@ -460,6 +485,7 @@ Begin
   CreateEnergyItems;
   CreatePowerItems;
   CreateMagFieldItems;
+  CreateFuelConsumptionItems;
   CreateOzoneConcItems;
   CreateAngleItems;
   CreateMemoryItems;

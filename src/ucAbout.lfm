@@ -12,6 +12,7 @@ object AboutBox: TAboutBox
   Font.Color = clWindowText
   OnCreate = FormCreate
   Position = poMainFormCenter
+  ShowHint = True
   LCLVersion = '2.3.0.0'
   object Image1: TImage
     AnchorSideLeft.Control = Owner
