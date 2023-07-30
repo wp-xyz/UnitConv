@@ -58,6 +58,7 @@ type
     procedure btnIconStyleClicked(Sender: TObject);
   private
     { Private-Deklarationen }
+    FActivated: Boolean;
     OldFlipWidth : integer;
     Procedure Calculate;
     Procedure FillCombo(ACombo:TCustomCombobox);
@@ -325,7 +326,21 @@ end;
 
 procedure TMainForm.FormActivate(Sender: TObject);
 begin
-  Constraints.MinHeight := PanelRight.Top + PanelControls.Top + PanelControls.Height + PanelBottom.Height; //BtnExit.Height + BtnExit.BorderSpacing.Bottom*2;
+  if not FActivated then
+  begin
+    ReadIni;
+    lvDataTypes.Columns[0].Width := lvDataTypes.ClientWidth - GetSystemMetrics(SM_CXVSCROLL);
+    Constraints.MinHeight := PanelRight.Top + PanelControls.Top + PanelControls.Height + PanelBottom.Height; //BtnExit.Height + BtnExit.BorderSpacing.Bottom*2;
+    PanelRight.Constraints.MinWidth :=
+      btnPaste.Left + btnPaste.Width +
+      edSource.BorderSpacing.Left + 2*BtnFlip.Width +
+      cbSourceUnits.BorderSpacing.Left + cbSourceUnits.BorderSpacing.Right;
+    Constraints.MinWidth :=
+      PanelLeft.Constraints.MinWidth + PanelLeft.BorderSpacing.Left + PanelLeft.BorderSpacing.Right +
+      Splitter1.Width +
+      PanelRight.Constraints.MinWidth + PanelRight.BorderSpacing.Left + PanelRight.BorderSpacing.Right;
+    FActivated := true;
+  end;
 end;
 
 
@@ -356,10 +371,6 @@ begin
       ImageIndex := DataItems[i].ImageIndex;
     end;
   LvDataTypes.Selected := LvDataTypes.Items[0];
-
-  ReadIni;
-
-  lvDataTypes.Columns[0].Width := lvDataTypes.ClientWidth - GetSystemMetrics(SM_CXVSCROLL); 
 
   PickItem(lvDataTypes.Items[0]);
 

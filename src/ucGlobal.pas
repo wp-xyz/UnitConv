@@ -49,14 +49,15 @@ type
     Dest  : integer;
     ImageIndex : integer;
   End;
+  PDataItem = ^TDataItem;
 
-Var
+var
   DataItems: Array Of TDataItem;
 
-Procedure CreateItems;
-Procedure DestroyItems;
-Function  ConvertUnitFrom(x,A,B,C,D: Double) : Double;
-Function  ConvertUnitTo(y,A,B,C,D: Double) : Double;
+procedure CreateItems;
+procedure DestroyItems;
+function  ConvertUnitFrom(x,A,B,C,D: Double) : Double;
+function  ConvertUnitTo(y,A,B,C,D: Double) : Double;
 
 type
   TFloatFormat = (fmtStandard, fmtExp, fmtFixed);

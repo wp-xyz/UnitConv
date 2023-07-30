@@ -9,7 +9,6 @@ object MainForm: TMainForm
   ClientHeight = 328
   ClientWidth = 573
   Color = clBtnFace
-  Constraints.MinWidth = 450
   Font.Color = clWindowText
   KeyPreview = True
   OnActivate = FormActivate
@@ -18,7 +17,7 @@ object MainForm: TMainForm
   OnDestroy = FormDestroy
   ParentBiDiMode = False
   ShowHint = True
-  LCLVersion = '2.3.0.0'
+  LCLVersion = '3.99.0.0'
   Scaled = False
   object Splitter1: TSplitter
     Left = 210
@@ -27,6 +26,7 @@ object MainForm: TMainForm
     Width = 6
     Color = clBtnFace
     ParentColor = False
+    ResizeStyle = rsPattern
   end
   object PanelLeft: TPanel
     Left = 6
@@ -40,6 +40,8 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     ClientHeight = 284
     ClientWidth = 201
+    Constraints.MinWidth = 160
+    ParentBackground = False
     TabOrder = 0
     object lvDatatypes: TListView
       Left = 0
@@ -75,6 +77,7 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     ClientHeight = 284
     ClientWidth = 348
+    ParentBackground = False
     TabOrder = 2
     object HeaderPanel: TPanel
       AnchorSideRight.Side = asrBottom
@@ -123,15 +126,17 @@ object MainForm: TMainForm
       AnchorSideRight.Control = PanelRight
       AnchorSideRight.Side = asrBottom
       Left = 0
-      Height = 163
+      Height = 161
       Top = 40
       Width = 348
       Anchors = [akTop, akLeft, akRight]
+      AutoSize = True
       BorderSpacing.Top = 8
       BevelOuter = bvLowered
-      ClientHeight = 163
+      ClientHeight = 161
       ClientWidth = 348
       Color = clScrollBar
+      ParentBackground = False
       ParentColor = False
       TabOrder = 1
       OnResize = PanelControlsResize
@@ -249,6 +254,7 @@ object MainForm: TMainForm
         Top = 118
         Width = 97
         AutoSize = True
+        BorderSpacing.Right = 16
         BorderSpacing.Bottom = 16
         Caption = 'Exchange'
         Glyph.Data = {
@@ -356,6 +362,7 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     ClientHeight = 38
     ClientWidth = 573
+    ParentBackground = False
     TabOrder = 3
     object btnLargeIcons: TSpeedButton
       Left = 6
