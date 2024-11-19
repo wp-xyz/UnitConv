@@ -52,3 +52,5 @@ __history/
 backup/
 *.bak
 *.lps
+*.res
+*.RES

@@ -4,10 +4,13 @@ uses
   Forms,
   ucMain, ucFormat;
 
-{$R *.RES}
+{$R *.res}
 
 begin
-  Application.Scaled:=True;
+ {$if declared(UseHeapTrace)}
+  GlobalSkipIfNoLeaks := True;  // supported as of debugger version 3.2.0
+ {$endIf}
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
