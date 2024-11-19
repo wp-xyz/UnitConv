@@ -54,3 +54,4 @@ backup/
 *.lps
 *.res
 *.RES
+/src/*.ini
