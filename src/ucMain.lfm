@@ -11,14 +11,14 @@ object MainForm: TMainForm
   Color = clBtnFace
   Font.Color = clWindowText
   KeyPreview = True
+  ParentBiDiMode = False
+  ShowHint = True
+  LCLVersion = '4.99.0.0'
+  Scaled = False
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ParentBiDiMode = False
-  ShowHint = True
-  LCLVersion = '3.99.0.0'
-  Scaled = False
   object Splitter1: TSplitter
     Left = 210
     Height = 290
@@ -166,9 +166,9 @@ object MainForm: TMainForm
         BorderSpacing.Left = 16
         BorderSpacing.Top = 16
         CharCase = ecUppercase
-        OnChange = edSourceChange
         TabOrder = 0
         Text = '0'
+        OnChange = edSourceChange
       end
       object edResult: TEdit
         AnchorSideLeft.Control = edSource
@@ -203,8 +203,8 @@ object MainForm: TMainForm
         Caption = '&Format...'
         ModalResult = 8
         NumGlyphs = 2
-        OnClick = btnFormatClick
         TabOrder = 4
+        OnClick = btnFormatClick
       end
       object cbResultUnits: TComboBox
         AnchorSideLeft.Control = cbSourceUnits
@@ -220,9 +220,9 @@ object MainForm: TMainForm
         Anchors = [akTop, akLeft, akRight]
         DropDownCount = 24
         ItemHeight = 15
-        OnChange = cbResultUnitsChange
         Style = csDropDownList
         TabOrder = 3
+        OnChange = cbResultUnitsChange
       end
       object cbSourceUnits: TComboBox
         AnchorSideLeft.Side = asrBottom
@@ -240,9 +240,9 @@ object MainForm: TMainForm
         BorderSpacing.Right = 16
         DropDownCount = 24
         ItemHeight = 15
-        OnChange = cbSourceUnitsChange
         Style = csDropDownList
         TabOrder = 1
+        OnChange = cbSourceUnitsChange
       end
       object btnFlip: TBitBtn
         AnchorSideLeft.Control = cbResultUnits
@@ -288,8 +288,8 @@ object MainForm: TMainForm
         Images = Images
         ImageIndex = 18
         ImageWidth = 16
-        OnClick = btnFlipClick
         TabOrder = 5
+        OnClick = btnFlipClick
       end
       object btnPaste: TSpeedButton
         AnchorSideLeft.Control = PanelControls
@@ -318,8 +318,8 @@ object MainForm: TMainForm
         ImageIndex = 20
         ImageWidth = 16
         Spacing = 0
-        OnClick = btnPasteClick
         ParentFont = False
+        OnClick = btnPasteClick
       end
       object btnCopy: TSpeedButton
         AnchorSideLeft.Control = btnPaste
@@ -347,8 +347,8 @@ object MainForm: TMainForm
         ImageIndex = 21
         ImageWidth = 16
         Spacing = 0
-        OnClick = btnCopyClick
         ParentFont = False
+        OnClick = btnCopyClick
       end
     end
   end
@@ -459,9 +459,9 @@ object MainForm: TMainForm
       Images = Images
       ImageIndex = 19
       ImageWidth = 16
-      OnClick = btnExitClick
       ParentFont = False
       TabOrder = 0
+      OnClick = btnExitClick
     end
     object btnAbout: TBitBtn
       AnchorSideRight.Control = btnExit
@@ -476,8 +476,8 @@ object MainForm: TMainForm
       AutoSize = True
       BorderSpacing.Right = 8
       Caption = 'About...'
-      OnClick = btnAboutClick
       TabOrder = 1
+      OnClick = btnAboutClick
     end
   end
   object Images: TImageList
