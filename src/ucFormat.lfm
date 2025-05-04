@@ -10,24 +10,24 @@ object FormatDlg: TFormatDlg
   ClientWidth = 264
   Font.Color = clWindowText
   Font.Height = -12
-  OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '2.3.0.0'
+  LCLVersion = '4.99.0.0'
+  OnShow = FormShow
   object btnOK: TButton
     AnchorSideTop.Control = btnCancel
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = btnCancel
     Left = 98
     Height = 25
-    Top = 228
+    Top = 214
     Width = 75
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 8
     Caption = '&OK'
     Default = True
     ModalResult = 1
-    OnClick = btnOKClick
     TabOrder = 1
+    OnClick = btnOKClick
   end
   object btnCancel: TButton
     AnchorSideTop.Control = Panel1
@@ -36,7 +36,7 @@ object FormatDlg: TFormatDlg
     AnchorSideRight.Side = asrBottom
     Left = 181
     Height = 25
-    Top = 228
+    Top = 214
     Width = 75
     Anchors = [akTop, akRight]
     BorderSpacing.Bottom = 8
@@ -51,14 +51,15 @@ object FormatDlg: TFormatDlg
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 8
-    Height = 212
+    Height = 198
     Top = 8
     Width = 248
     Anchors = [akTop, akLeft, akRight]
+    AutoSize = True
     BorderSpacing.Around = 8
     BevelInner = bvRaised
     BevelOuter = bvLowered
-    ClientHeight = 212
+    ClientHeight = 198
     ClientWidth = 248
     TabOrder = 0
     object rgFormats: TGroupBox
@@ -73,7 +74,7 @@ object FormatDlg: TFormatDlg
       Anchors = [akTop, akLeft, akRight]
       AutoSize = True
       BorderSpacing.Around = 8
-      Caption = 'Number formats:'
+      Caption = 'Number format'
       ChildSizing.LeftRightSpacing = 6
       ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
       ChildSizing.EnlargeVertical = crsHomogenousChildResize
@@ -93,8 +94,8 @@ object FormatDlg: TFormatDlg
         Width = 96
         BorderSpacing.Left = 12
         Caption = '&general format'
-        OnClick = rbFormatAutoClick
         TabOrder = 0
+        OnClick = rbFormatAutoClick
       end
       object rbFormatExp: TRadioButton
         AnchorSideLeft.Control = rbFormatAuto
@@ -103,10 +104,10 @@ object FormatDlg: TFormatDlg
         Left = 12
         Height = 19
         Top = 19
-        Width = 119
+        Width = 118
         Caption = '&exponential format'
-        OnClick = rbFormatExpClick
         TabOrder = 1
+        OnClick = rbFormatExpClick
       end
       object rbFormatFixed: TRadioButton
         AnchorSideLeft.Control = rbFormatAuto
@@ -115,11 +116,11 @@ object FormatDlg: TFormatDlg
         Left = 12
         Height = 19
         Top = 38
-        Width = 83
+        Width = 82
         BorderSpacing.Bottom = 12
         Caption = '&fixed format'
-        OnClick = rbFormatFixedClick
         TabOrder = 2
+        OnClick = rbFormatFixedClick
       end
     end
     object lblDecimalSeparator: TLabel
@@ -140,7 +141,7 @@ object FormatDlg: TFormatDlg
       Left = 10
       Height = 15
       Top = 140
-      Width = 104
+      Width = 105
       Caption = '&Thousand separator'
       ParentColor = False
     end
@@ -162,13 +163,14 @@ object FormatDlg: TFormatDlg
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = cbDecimalSeparator
       AnchorSideRight.Side = asrBottom
-      Left = 130
+      Left = 131
       Height = 23
       Top = 165
-      Width = 108
+      Width = 107
       Alignment = taRightJustify
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 6
+      BorderSpacing.Bottom = 8
       MaxValue = 15
       TabOrder = 3
       Value = 3
@@ -179,10 +181,10 @@ object FormatDlg: TFormatDlg
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = rgFormats
       AnchorSideRight.Side = asrBottom
-      Left = 130
+      Left = 131
       Height = 23
       Top = 107
-      Width = 108
+      Width = 107
       Anchors = [akTop, akLeft, akRight]
       ItemHeight = 15
       ItemIndex = 0
@@ -201,10 +203,10 @@ object FormatDlg: TFormatDlg
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = rgFormats
       AnchorSideRight.Side = asrBottom
-      Left = 130
+      Left = 131
       Height = 23
       Top = 136
-      Width = 108
+      Width = 107
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 16
       BorderSpacing.Top = 6
