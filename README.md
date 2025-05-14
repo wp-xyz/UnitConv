@@ -57,6 +57,7 @@ The function `ConvertUnitFrom(value_in_unit, A, B, C, D)` in `src/ucGlobal.pas` 
 The function `ConvertUnitTo(value_in_base, A, B, C, D)` performs the inverse operation. It takes a value that is already in the **Base Unit** (`value_in_base`) and converts it to the specific Unit U defined by the constants A, B, C, D. The formula used for this inverse conversion is:
 
 $$ V_U = \frac{B - D \times V_{Base}}{C \times V_{Base} - A} $$
+
 This formula is derived by rearranging the first equation to solve for $V_U$.
 
 The coefficients A, B, C, and D for each unit conversion are stored in the `TUnitItem` record:
