@@ -17,11 +17,46 @@ The primary purpose of UnitConv is to facilitate quick and accurate unit convers
 *   **Unit Swapping**: The "Flip" button provides a convenient way to reverse the source and destination units, allowing for quick reciprocal conversions.
 *   **Persistent Settings**: The application saves user preferences, including window position, the last selected measurement type and units, and formatting settings, to an INI file (`UnitConv.ini`) upon closing. These settings are loaded when the application starts, managed by the `ReadIni` and `WriteIni` procedures in `src/ucMain.pas`.
 
+## Real-World Applications and Problem Solving
+
+UnitConv, while seemingly simple, can be a valuable tool in various practical scenarios. Its core function—converting between different scales and measurement systems—is fundamental in many fields. Here are some ideas for how this project can be used to solve problems in the real world:
+
+1.  **Engineering and Manufacturing:**
+    *   **Problem:** Engineers often work with specifications or designs that use units from different systems (e.g., metric and imperial). Converting measurements accurately is critical for design compatibility and manufacturing precision.
+    *   **Solution:** Use UnitConv to quickly convert dimensions (Length, Area, Volume), forces, pressures, or flow rates specified in one unit system to another, ensuring that components fit together correctly and systems operate as intended.
+    *   **Example:** Converting blueprints from feet and inches to meters and millimeters for manufacturing in a facility that uses metric machinery. Converting pressure readings from PSI to Pascal for compatibility with sensor data.
+2.  **Science and Research:**
+    *   **Problem:** Scientific data and research papers frequently use a wide variety of units depending on the discipline or historical context. Researchers need to convert data to a consistent system (like SI units) for analysis and comparison.
+    *   **Solution:** UnitConv can convert scientific measurements such as energy (Joules, eV), magnetic fields (Tesla, Gauss), temperature (°C, °F, K), and fundamental constants used in calculations.
+    *   **Example:** Converting experimental temperature data recorded in Fahrenheit to Celsius or Kelvin for thermodynamic calculations. Converting energy values from electronvolts to Joules for comparing results with other experiments or theoretical models.
+3.  **Cooking and Recipes:**
+    *   **Problem:** Recipes from different regions or sources may use different units for volume or weight (e.g., milliliters vs. fluid ounces, grams vs. pounds). Scaling recipes also requires accurate conversions.
+    *   **Solution:** Use the Volume and Mass converters to easily adapt recipes.
+    *   **Example:** Converting liquid measurements from US gallons/fluid ounces to liters/milliliters for a European recipe. Converting ingredient weights from pounds to grams.
+4.  **Travel and International Trade:**
+    *   **Problem:** When traveling or dealing with international suppliers/customers, understanding quantities, distances, and prices based on different units is essential. Fuel consumption, speed limits, currency exchange (though not directly supported by current units, the structure allows for such additions), and product dimensions all use varying units globally.
+    *   **Solution:** UnitConv's Speed, Length, Volume, and Fuel Consumption categories are directly applicable.
+    *   **Example:** Converting a car's fuel efficiency from miles per gallon (US or UK) to liters per 100 km. Converting distances in miles to kilometers. Understanding product volumes listed in cubic feet in terms of cubic meters.
+5.  **Education:**
+    *   **Problem:** Students learning physics, chemistry, or engineering often struggle with unit conversions, which is a fundamental skill.
+    *   **Solution:** UnitConv can be used as a practical tool for practicing and checking conversion homework problems across various scientific dimensions. Examining the source code (specifically `src/ucGlobal.pas`) can also provide concrete examples of the conversion formulas for different unit types.
+    *   **Example:** Converting units for physics problems involving kinematics (Speed, Acceleration), dynamics (Force), energy, or pressure.
+6.  **Software Development/System Administration**:
+    *   **Problem:** Understanding and converting data sizes between binary (KiB, MiB, GiB, etc.) and decimal (KB, MB, GB, etc.) standards is crucial for managing storage, network speeds, and file sizes.
+    *   **Solution:** The Data volume converter directly addresses this.
+    *   **Example:** Converting a hard drive capacity listed in GB (decimal) to GiB (binary) to understand the actual usable space reported by an operating system, or converting network transfer speeds from MB/s to MiB/s.
+7.  **Environmental Monitoring**:
+    *   **Problem:** Environmental data, such as concentrations of pollutants like ozone, may be reported using different units (e.g., g/Nm³, µg/m³, ppm, ppb, Wt%, Vol%). Comparing or aggregating data from different sources requires conversion to a common unit.
+    *   **Solution:** The Ozone concentration converter provides specific conversions for this domain.
+    *   **Example:** Converting ozone concentration readings from µg/m³ to g/Nm³ for reporting or regulatory compliance, or converting between weight and volume percentages.
+8.  **Astronomy**:
+    *   **Problem:** Distances in astronomy are vast and measured using specialized units that are unfamiliar in everyday contexts (e.g., light-years, astronomical units, parsecs). Understanding the relative scales requires converting between these units and more familiar ones like kilometers.
+    *   **Solution:** The Length converter includes astronomical units.
+    *   **Example:** Converting the distance to a star from light-years to astronomical units or parsecs for specific calculations or comparisons of stellar distances.
+
+By providing a centralized and configurable tool for these conversions, UnitConv reduces the potential for errors inherent in manual calculations or relying on unreliable online converters. The clear definition of conversion factors in the `src/ucGlobal.pas` unit also makes it a potentially useful reference for understanding how specific conversions are defined.
+
 ## Supported Measurement Types and Units
-
-The `src/ucGlobal.pas` unit is the central repository for defining the supported measurement types and their corresponding units. The `DataItems` array, populated by the `CreateItems` procedure, holds this information. Each entry in `DataItems` represents a measurement type (e.g., `diLength`, `diMass`) and contains a list of `TUnitItem` records. Each `TUnitItem` defines a specific unit within that category, including its name and the crucial A, B, C, and D constants used in the conversion mechanism.
-
-For each measurement type, there is an implicit **Base Unit**. This base unit is the reference point for conversions within that category. The constants A, B, C, D for each specific unit ($U$) are defined relative to this Base Unit. Based on the constants provided in `src/ucGlobal.pas`, the likely Base Units are:
 
 *   **Length**: meters (m)
 *   **Area**: square meters (m²)
@@ -41,6 +76,10 @@ For each measurement type, there is an implicit **Base Unit**. This base unit is
 *   **Ozone concentration**: grams per normal cubic meter (g/Nm³)
 *   **Angle**: degrees
 *   **Data volume**: bytes
+
+The `src/ucGlobal.pas` unit is the central repository for defining the supported measurement types and their corresponding units. The `DataItems` array, populated by the `CreateItems` procedure, holds this information. Each entry in `DataItems` represents a measurement type (e.g., `diLength`, `diMass`) and contains a list of `TUnitItem` records. Each `TUnitItem` defines a specific unit within that category, including its name and the crucial A, B, C, and D constants used in the conversion mechanism.
+
+For each measurement type, there is an implicit **Base Unit**. This base unit is the reference point for conversions within that category. The constants A, B, C, D for each specific unit ($U$) are defined relative to this Base Unit. Based on the constants provided in `src/ucGlobal.pas`, the likely Base Units are:
 
 A comprehensive list of all supported units within these categories, along with their specific A, B, C, D constants, can be found by examining the `CreateXXXXItems` procedures within the `implementation` section of `src/ucGlobal.pas`.
 
@@ -161,45 +200,6 @@ Key components and logic:
 *   **`lblIcons8MouseEnter` and `lblIcons8MouseLeave` Procedures**: Implement simple visual feedback by adding or removing an underline style to the `lblIcons8` font when the mouse cursor enters or leaves the label area.
 *   **`btnOK` (TButton)**: Closes the about box. The `btnOKClick` procedure sets the dialog's `ModalResult` to `mrOK` (though any non-zero value would close a modal dialog).
 
-## Real-World Applications and Problem Solving
-
-UnitConv, while seemingly simple, can be a valuable tool in various practical scenarios. Its core function—converting between different scales and measurement systems—is fundamental in many fields. Here are some ideas for how this project can be used to solve problems in the real world:
-
-1.  **Engineering and Manufacturing:**
-    *   **Problem:** Engineers often work with specifications or designs that use units from different systems (e.g., metric and imperial). Converting measurements accurately is critical for design compatibility and manufacturing precision.
-    *   **Solution:** Use UnitConv to quickly convert dimensions (Length, Area, Volume), forces, pressures, or flow rates specified in one unit system to another, ensuring that components fit together correctly and systems operate as intended.
-    *   **Example:** Converting blueprints from feet and inches to meters and millimeters for manufacturing in a facility that uses metric machinery. Converting pressure readings from PSI to Pascal for compatibility with sensor data.
-2.  **Science and Research:**
-    *   **Problem:** Scientific data and research papers frequently use a wide variety of units depending on the discipline or historical context. Researchers need to convert data to a consistent system (like SI units) for analysis and comparison.
-    *   **Solution:** UnitConv can convert scientific measurements such as energy (Joules, eV), magnetic fields (Tesla, Gauss), temperature (°C, °F, K), and fundamental constants used in calculations.
-    *   **Example:** Converting experimental temperature data recorded in Fahrenheit to Celsius or Kelvin for thermodynamic calculations. Converting energy values from electronvolts to Joules for comparing results with other experiments or theoretical models.
-3.  **Cooking and Recipes:**
-    *   **Problem:** Recipes from different regions or sources may use different units for volume or weight (e.g., milliliters vs. fluid ounces, grams vs. pounds). Scaling recipes also requires accurate conversions.
-    *   **Solution:** Use the Volume and Mass converters to easily adapt recipes.
-    *   **Example:** Converting liquid measurements from US gallons/fluid ounces to liters/milliliters for a European recipe. Converting ingredient weights from pounds to grams.
-4.  **Travel and International Trade:**
-    *   **Problem:** When traveling or dealing with international suppliers/customers, understanding quantities, distances, and prices based on different units is essential. Fuel consumption, speed limits, currency exchange (though not directly supported by current units, the structure allows for such additions), and product dimensions all use varying units globally.
-    *   **Solution:** UnitConv's Speed, Length, Volume, and Fuel Consumption categories are directly applicable.
-    *   **Example:** Converting a car's fuel efficiency from miles per gallon (US or UK) to liters per 100 km. Converting distances in miles to kilometers. Understanding product volumes listed in cubic feet in terms of cubic meters.
-5.  **Education:**
-    *   **Problem:** Students learning physics, chemistry, or engineering often struggle with unit conversions, which is a fundamental skill.
-    *   **Solution:** UnitConv can be used as a practical tool for practicing and checking conversion homework problems across various scientific dimensions. Examining the source code (specifically `src/ucGlobal.pas`) can also provide concrete examples of the conversion formulas (A, B, C, D coefficients) for different unit types.
-    *   **Example:** Converting units for physics problems involving kinematics (Speed, Acceleration), dynamics (Force), energy, or pressure.
-6.  **Software Development/System Administration**:
-    *   **Problem:** Understanding and converting data sizes between binary (KiB, MiB, GiB, etc.) and decimal (KB, MB, GB, etc.) standards is crucial for managing storage, network speeds, and file sizes.
-    *   **Solution:** The Data volume converter directly addresses this.
-    *   **Example:** Converting a hard drive capacity listed in GB (decimal) to GiB (binary) to understand the actual usable space reported by an operating system, or converting network transfer speeds from MB/s to MiB/s.
-7.  **Environmental Monitoring**:
-    *   **Problem:** Environmental data, such as concentrations of pollutants like ozone, may be reported using different units (e.g., g/Nm³, µg/m³, ppm, ppb, Wt%, Vol%). Comparing or aggregating data from different sources requires conversion to a common unit.
-    *   **Solution:** The Ozone concentration converter provides specific conversions for this domain.
-    *   **Example:** Converting ozone concentration readings from µg/m³ to g/Nm³ for reporting or regulatory compliance, or converting between weight and volume percentages.
-8.  **Astronomy**:
-    *   **Problem:** Distances in astronomy are vast and measured using specialized units that are unfamiliar in everyday contexts (e.g., light-years, astronomical units, parsecs). Understanding the relative scales requires converting between these units and more familiar ones like kilometers.
-    *   **Solution:** The Length converter includes astronomical units.
-    *   **Example:** Converting the distance to a star from light-years to astronomical units or parsecs for specific calculations or comparisons of stellar distances.
-
-By providing a centralized and configurable tool for these conversions, UnitConv reduces the potential for errors inherent in manual calculations or relying on unreliable online converters. The clear definition of conversion factors in the `src/ucGlobal.pas` unit also makes it a potentially useful reference for understanding how specific conversions are defined.
-
 ## Building from Source
 
 To compile and run UnitConv from its source code, you will need the following:
@@ -247,4 +247,11 @@ Contributions are welcome. If you find a bug, have an idea for an improvement, o
 
 ## License
 
-License information for the UnitConv project is not explicitly provided in the included source files. It is recommended to check the project's distribution for licensing details.
+MIT License
+
+## Attributions
+
+* Compiler: **Free Pascal** (https://www.freepascal.org/)
+* Integrated development environment: **Lazarus** (https://www.lazarus-ide.org/)
+* Icons were provided by **Icons8** (https://icons8.com/icons/office)
+* Most of the README.md file was written by an AI prototype developed by Joao Schuler using Gemini 2.5 Flash.
