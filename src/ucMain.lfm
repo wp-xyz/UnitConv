@@ -135,7 +135,7 @@ object MainForm: TMainForm
       BevelOuter = bvLowered
       ClientHeight = 161
       ClientWidth = 348
-      Color = clScrollBar
+      Color = clAppWorkspace
       ParentBackground = False
       ParentColor = False
       TabOrder = 1
@@ -252,7 +252,7 @@ object MainForm: TMainForm
         Height = 26
         Hint = 'Exchange source and result units'
         Top = 118
-        Width = 97
+        Width = 96
         AutoSize = True
         BorderSpacing.Right = 16
         BorderSpacing.Bottom = 16

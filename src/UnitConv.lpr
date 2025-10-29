@@ -1,5 +1,9 @@
 program UnitConv;
+
 uses
+ {$IFDEF UNIX}
+  clocale,
+ {$ENDIF}
   Interfaces, SysUtils, Forms,
   ucMain, ucFormat;
 
